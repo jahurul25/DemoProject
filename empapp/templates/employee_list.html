@@ -1,0 +1,31 @@
+
+<html>
+    <head>
+        {% load static %} 
+        <title>Employee List</title>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    </head>
+    <body>
+        <h1>Employee List</h1>
+        <table class="table table-bordered">
+            <tr>
+                <th>SN</th>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th>Designation</th>
+                <th>Created</th>
+            </tr>
+            {% for data in employee_list %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ data.emp_name }}</td>
+                    <td>{{ data.mobile }}</td>
+                    <td>{{ data.email }}</td>
+                    <td>{{ data.get_designation_display }}</td> 
+                    <td>{{ data.created|date:"d-M-Y" }}</td> 
+                </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
